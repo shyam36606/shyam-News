@@ -1,45 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Your API key from NewsAPI
-    const apiKey = 'e4ad5c8d1e1947bf971432dc797f2858';  // Replace with your actual NewsAPI key
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyam News</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    // URL to fetch news related to Ranchi
-    const url = `https://newsapi.org/v2/everything?q=ranchi&apiKey=${apiKey}&language=en`;
+    <!-- Header -->
+    <header>
+        <div class="logo">Shyam News</div>
+        <nav>
+           
+        </nav>
+    </header>
 
-    // Fetch the news data
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const articles = data.articles;
+    <!-- Main Content -->
+    <main>
+        <!-- Shyam News Section -->
+        <section class="news-category">
+            <h2>Shyam News</h2>
+            <div id="local-news">
+                <!-- News articles will be injected here by JavaScript -->
+            </div>
+        </section>
+    </main>
 
-         
-            if (articles.length > 0) {
-                let newsContent = '';
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Shyam News. All rights reserved.</p>
+    </footer>
 
-  
-                articles.forEach(article => {
-                    newsContent += `
-                        <div class="news-article">
-                            <img src="${article.urlToImage ? article.urlToImage : 'https://via.placeholder.com/150x100'}" alt="News Image">
-                            <div>
-                                <h3>${article.title}</h3>
-                                <p>${article.description ? article.description : 'No description available.'}</p>
-                                <a href="${article.url}" target="_blank">Read more</a>
-                            </div>
-                        </div>
-                    `;
-                });
-
-
-                document.getElementById('local-news').innerHTML = newsContent;
-            } else {
-             
-                document.getElementById('local-news').innerHTML = `<p>No news available for Ranchi at the moment.</p>`;
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching the news:", error);
-            document.getElementById('local-news').innerHTML = `<p>Sorry, there was an error fetching the news.</p>`;
-        });
-});
-
-
+    <script src="news.js"></script>
+</body>
+</html>
